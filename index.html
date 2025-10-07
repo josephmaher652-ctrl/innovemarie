@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>InnovMaria</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    /* ===== Animations ===== */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInLeft {
+      from { opacity: 0; transform: translateX(-30px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes fadeInRight {
+      from { opacity: 0; transform: translateX(30px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    @keyframes pulse {
+      0%,100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      51%, 100% { opacity: 0; }
+    }
+
+    /* ===== Effects & Classes ===== */
+    .animate-fadeInUp { animation: fadeInUp 0.8s ease-out forwards; }
+    .animate-fadeInLeft { animation: fadeInLeft 0.8s ease-out forwards; }
+    .animate-fadeInRight { animation: fadeInRight 0.8s ease-out forwards; }
+    .animate-float { animation: float 3s ease-in-out infinite; }
+    .animate-pulse-custom { animation: pulse 2s infinite; }
+
+    .gradient-bg {
+      background: linear-gradient(-45deg, #1e40af, #3b82f6, #60a5fa, #93c5fd);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+    }
+
+    .hover-lift {
+      transition: all 0.4s ease;
+    }
+    .hover-lift:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(30, 64, 175, 0.2);
+    }
+
+    .scale-on-hover {
+      transition: transform 0.3s ease;
+    }
+    .scale-on-hover:hover { transform: scale(1.05); }
+
+    .btn-glow {
+      background: linear-gradient(90deg, #1e40af, #3b82f6, #60a5fa);
+      color: white;
+      box-shadow: 0 0 20px rgba(59,130,246,0.4);
+      transition: all 0.3s ease;
+    }
+    .btn-glow:hover {
+      box-shadow: 0 0 30px rgba(59,130,246,0.6);
+      transform: translateY(-2px);
+    }
+
+    .nav-link {
+      position: relative;
+      transition: all 0.3s ease;
+    }
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #3b82f6;
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover::after { width: 100%; }
+
+    .card-hover {
+      transition: all 0.4s ease;
+      border: 2px solid transparent;
+    }
+    .card-hover:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(59,130,246,0.15);
+      border-color: #3b82f6;
+    }
+
+    .typing::after {
+      content: "|";
+      animation: blink 1s infinite;
+    }
+
+    .fade-in-observer {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+    .fade-in-observer.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+
+<body class="font-sans text-gray-800">
+  <!-- ===== Header ===== -->
+  <header class="bg-white/95 backdrop-blur-sm shadow-lg fixed top-0 w-full z-50 transition-all duration-300" id="header">
+    <div class="container mx-auto flex justify-between items-center p-4">
+      <h1 class="text-2xl font-bold text-blue-600 animate-float">InnovMaria</h1>
+      <nav class="space-x-6 hidden md:flex">
+        <a href="#home" class="nav-link hover:text-blue-600">Home</a>
+        <a href="#about" class="nav-link hover:text-blue-600">About</a>
+        <a href="#services" class="nav-link hover:text-blue-600">Services</a>
+        <a href="#programs" class="nav-link hover:text-blue-600">Programs</a>
+        <a href="#contact" class="nav-link hover:text-blue-600">Contact</a>
+      </nav>
+      <a href="#contact" class="btn-glow px-4 py-2 rounded-lg ml-4">Get Started</a>
+    </div>
+  </header>
+
+  <!-- ===== Hero Section ===== -->
+  <section id="home" class="pt-24 gradient-bg text-center py-24 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute top-10 left-10 w-20 h-20 bg-white rounded-full animate-float"></div>
+      <div class="absolute top-32 right-20 w-16 h-16 bg-white rounded-full animate-float" style="animation-delay: 1s;"></div>
+      <div class="absolute bottom-20 left-1/4 w-12 h-12 bg-white rounded-full animate-float" style="animation-delay: 2s;"></div>
+    </div>
+    <div class="relative z-10">
+      <h2 class="text-5xl font-bold mb-4 text-white animate-fadeInUp">Bridging Academia and Industry Through <span class="typing">Artificial Intelligence</span></h2>
+      <p class="text-lg text-white/90 mb-6 max-w-3xl mx-auto animate-fadeInUp" style="animation-delay:0.3s;">
+        InnovMaria delivers AI-driven solutions and nurtures young innovators through specialized programs.
+      </p>
+      <div class="space-x-4 animate-fadeInUp" style="animation-delay:0.5s;">
+        <a href="#about" class="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold scale-on-hover">Learn More</a>
+        <a href="#programs" class="border-2 border-white text-white px-6 py-3 rounded-lg font-semibold scale-on-hover hover:bg-white hover:text-blue-600">Explore Courses</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Highlights ===== -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
+      <div class="fade-in-observer p-6 hover-lift">
+        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4 animate-pulse-custom">
+          <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13M3 6.253v13"></path>
+          </svg>
+        </div>
+        <h3 class="font-bold text-blue-600 text-xl mb-2">AI for Academia</h3>
+        <p class="text-gray-600">Smart tools for research and education.</p>
+      </div>
+      <div class="fade-in-observer p-6 hover-lift" style="animation-delay:0.2s;">
+        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4 animate-pulse-custom">
+          <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5H5v16"></path>
+          </svg>
+        </div>
+        <h3 class="font-bold text-blue-600 text-xl mb-2">AI for Industry</h3>
+        <p class="text-gray-600">Practical AI solutions for real-world impact.</p>
+      </div>
+      <div class="fade-in-observer p-6 hover-lift" style="animation-delay:0.4s;">
+        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4 animate-pulse-custom">
+          <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+          </svg>
+        </div>
+        <h3 class="font-bold text-blue-600 text-xl mb-2">Programs for Kids</h3>
+        <p class="text-gray-600">Inspiring the next generation of coders.</p>
+      </div>
+      <div class="fade-in-observer p-6 hover-lift" style="animation-delay:0.6s;">
+        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4 animate-pulse-custom">
+          <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14"></path>
+          </svg>
+        </div>
+        <h3 class="font-bold text-blue-600 text-xl mb-2">Innovation Culture</h3>
+        <p class="text-gray-600">Connecting knowledge with real-world outcomes.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== About ===== -->
+  <section id="about" class="py-20 bg-gradient-to-br from-gray-50 to-blue-50 text-center">
+    <div class="container mx-auto">
+      <h2 class="text-4xl font-bold mb-8 fade-in-observer">About Us</h2>
+      <p class="max-w-3xl mx-auto text-lg leading-relaxed text-gray-700 fade-in-observer">
+        InnovMaria, led by CEO Dr. Amr Abdo, connects academia and industry through AI solutions and youth programs. We bridge theory with innovation.
+      </p>
+      <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="fade-in-observer card-hover bg-white p-6 rounded-lg">
+          <h4 class="font-semibold text-xl text-blue-600 mb-3">Our Vision</h4>
+          <p class="text-gray-600">To lead in merging academic excellence with AI innovation.</p>
+        </div>
+        <div class="fade-in-observer card-hover bg-white p-6 rounded-lg">
+          <h4 class="font-semibold text-xl text-blue-600 mb-3">Our Mission</h4>
+          <p class="text-gray-600">Empowering youth and delivering practical AI for real challenges.</p>
+        </div>
+        <div class="fade-in-observer card-hover bg-white p-6 rounded-lg">
+          <h4 class="font-semibold text-xl text-blue-600 mb-3">Our Values</h4>
+          <p class="text-gray-600">Innovation, collaboration, and sustainable technology growth.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Contact ===== -->
+  <section id="contact" class="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+    <div class="container mx-auto text-center">
+      <h2 class="text-4xl font-bold mb-8 fade-in-observer">Contact Us</h2>
+      <p class="text-lg text-gray-600 mb-12 fade-in-observer">Start your AI journey with InnovMaria today!</p>
+      <form class="max-w-2xl mx-auto space-y-6 fade-in-observer">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <input type="text" placeholder="Your Name" class="w-full p-4 border-2 rounded-lg focus:border-blue-500 focus:outline-none transition-colors hover-lift" required>
+          <input type="email" placeholder="Your Email" class="w-full p-4 border-2 rounded-lg focus:border-blue-500 focus:outline-none transition-colors hover-lift" required>
+        </div>
+        <input type="text" placeholder="Subject" class="w-full p-4 border-2 rounded-lg focus:border-blue-500 focus:outline-none transition-colors hover-lift">
+        <textarea placeholder="Your Message" class="w-full p-4 border-2 rounded-lg h-40 focus:border-blue-500 focus:outline-none transition-colors hover-lift resize-none" required></textarea>
+        <button class="btn-glow px-8 py-4 rounded-lg font-semibold scale-on-hover">
+          Send Message
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer class="bg-gray-900 text-white py-12">
+    <div class="container mx-auto text-center">
+      <h3 class="text-2xl font-bold text-blue-400 mb-4 animate-float">InnovMaria</h3>
+      <p class="text-gray-400 mb-4">© 2025 InnovMaria — Bridging Academia and Industry through AI</p>
+      <div class="space-x-6">
+        <a href="#" class="text-gray-400 hover:text-blue-400">Privacy</a>
+        <a href="#" class="text-gray-400 hover:text-blue-400">Terms</a>
+        <a href="#" class="text-gray-400 hover:text-blue-400">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Smooth scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click',e=>{
+        e.preventDefault();
+        const target=document.querySelector(a.getAttribute('href'));
+        if(target) target.scrollIntoView({behavior:'smooth'});
+      });
+    });
+
+    // Intersection Observer
+    const observer=new IntersectionObserver(entries=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){ e.target.classList.add('visible'); observer.unobserve(e.target); }
+      });
+    },{threshold:0.1});
+    document.querySelectorAll('.fade-in-observer').forEach(el=>observer.observe(el));
+
+    // Typing effect
+    const typing=document.querySelector('.typing');
+    if(typing){ const txt=typing.textContent; typing.textContent=''; let i=0;
+      (function type(){ if(i<txt.length){ typing.textContent+=txt.charAt(i); i++; setTimeout(type,100); }})();
+    }
+  </script>
+</body>
+</html>
