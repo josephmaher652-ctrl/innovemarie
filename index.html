@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ScInnovHub</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    /* ===== Animations ===== */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInLeft {
+      from { opacity: 0; transform: translateX(-30px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes fadeInRight {
+      from { opacity: 0; transform: translateX(30px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    @keyframes pulse {
+      0%,100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      51%, 100% { opacity: 0; }
+    }
+
+    /* ===== Effects ===== */
+    .animate-fadeInUp { animation: fadeInUp 0.8s ease-out forwards; }
+    .animate-float { animation: float 3s ease-in-out infinite; }
+
+    .gradient-bg {
+      background: linear-gradient(-45deg, #1e40af, #3b82f6, #60a5fa, #93c5fd);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+    }
+
+    .hover-lift { transition: all 0.4s ease; }
+    .hover-lift:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(30,64,175,0.2);
+    }
+
+    .btn-glow {
+      background: linear-gradient(90deg, #1e40af, #3b82f6, #60a5fa);
+      color: white;
+      box-shadow: 0 0 20px rgba(59,130,246,0.4);
+      transition: all 0.3s ease;
+    }
+    .btn-glow:hover {
+      box-shadow: 0 0 30px rgba(59,130,246,0.6);
+      transform: translateY(-2px);
+    }
+
+    .nav-link {
+      position: relative;
+      transition: all 0.3s ease;
+    }
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #3b82f6;
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover::after { width: 100%; }
+
+    .fade-in-observer {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+    .fade-in-observer.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .typing::after {
+      content: "|";
+      animation: blink 1s infinite;
+    }
+  </style>
+</head>
+
+<body class="font-sans text-gray-800">
+
+  <!-- ===== HEADER ===== -->
+  <header class="bg-white/95 backdrop-blur-sm shadow-lg fixed top-0 w-full z-50 transition-all duration-300" id="header">
+    <div class="container mx-auto flex justify-between items-center p-4">
+      <h1 class="text-2xl font-bold text-blue-600 animate-float">ScInnovHub</h1>
+      <nav class="space-x-6 hidden md:flex text-sm font-medium">
+        <a href="#home" class="nav-link hover:text-blue-600">Home</a>
+        <a href="#academia" class="nav-link hover:text-blue-600">Academia</a>
+        <a href="#industry" class="nav-link hover:text-blue-600">Industry</a>
+        <a href="#innovation" class="nav-link hover:text-blue-600">Innovation</a>
+        <a href="#services" class="nav-link hover:text-blue-600">Services</a>
+        <a href="#blogs" class="nav-link hover:text-blue-600">Blogs</a>
+        <a href="#contact" class="nav-link hover:text-blue-600">Contact</a>
+        <a href="#about" class="nav-link hover:text-blue-600">About</a>
+      </nav>
+      <a href="#contact" class="btn-glow px-4 py-2 rounded-lg ml-4">Get Started</a>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section id="home" class="pt-24 gradient-bg text-center py-24 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute top-10 left-10 w-20 h-20 bg-white rounded-full animate-float"></div>
+      <div class="absolute top-32 right-20 w-16 h-16 bg-white rounded-full animate-float" style="animation-delay: 1s;"></div>
+      <div class="absolute bottom-20 left-1/4 w-12 h-12 bg-white rounded-full animate-float" style="animation-delay: 2s;"></div>
+    </div>
+    <div class="relative z-10">
+      <h2 class="text-5xl font-bold mb-4 text-white animate-fadeInUp">Empowering Innovation Through <span class="typing">Artificial Intelligence</span></h2>
+      <p class="text-lg text-white/90 mb-6 max-w-3xl mx-auto animate-fadeInUp" style="animation-delay:0.3s;">
+        Bridging academia and industry with data-driven insights and educational excellence.
+      </p>
+      <div class="space-x-4 animate-fadeInUp" style="animation-delay:0.5s;">
+        <a href="#about" class="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover-lift">Learn More</a>
+        <a href="#contact" class="border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover-lift hover:bg-white hover:text-blue-600">Contact Us</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTENT SECTIONS ===== -->
+  <section id="academia" class="py-20 text-center bg-gray-50">
+    <h2 class="text-3xl font-bold text-blue-600 mb-4">Academia</h2>
+    <p class="max-w-3xl mx-auto text-gray-600">Empowering research and education with intelligent AI tools.</p>
+  </section>
+
+  <section id="industry" class="py-20 text-center bg-white">
+    <h2 class="text-3xl font-bold text-blue-600 mb-4">Industry</h2>
+    <p class="max-w-3xl mx-auto text-gray-600">Delivering smart automation and AI-driven efficiency for businesses.</p>
+  </section>
+
+  <section id="innovation" class="py-20 text-center bg-gray-50">
+    <h2 class="text-3xl font-bold text-blue-600 mb-4">Innovation</h2>
+    <p class="max-w-3xl mx-auto text-gray-600">Creating sustainable solutions through innovation and collaboration.</p>
+  </section>
+
+  <section id="services" class="py-20 text-center bg-white">
+    <h2 class="text-3xl font-bold text-blue-600 mb-4">Services</h2>
+    <p class="max-w-3xl mx-auto text-gray-600">AI consulting, training, and custom solutions for organizations.</p>
+  </section>
+
+  <section id="blogs" class="py-20 text-center bg-gray-50">
+    <h2 class="text-3xl font-bold text-blue-600 mb-4">Blogs</h2>
+    <p class="max-w-3xl mx-auto text-gray-600">Stay updated with our latest insights in AI, research, and innovation.</p>
+  </section>
+
+  <section id="contact" class="py-20 bg-gradient-to-br from-gray-50 to-blue-50 text-center">
+    <h2 class="text-4xl font-bold mb-6 fade-in-observer">Contact Us</h2>
+    <p class="text-lg text-gray-600 mb-12 fade-in-observer">Let’s build the future together.</p>
+    <form class="max-w-2xl mx-auto space-y-6 fade-in-observer">
+      <input type="text" placeholder="Your Name" class="w-full p-4 border-2 rounded-lg focus:border-blue-500 focus:outline-none transition-colors" required>
+      <input type="email" placeholder="Your Email" class="w-full p-4 border-2 rounded-lg focus:border-blue-500 focus:outline-none transition-colors" required>
+      <textarea placeholder="Message" class="w-full p-4 border-2 rounded-lg h-40 focus:border-blue-500 focus:outline-none transition-colors resize-none" required></textarea>
+      <button class="btn-glow px-8 py-4 rounded-lg font-semibold scale-on-hover">Send Message</button>
+    </form>
+  </section>
+
+  <section id="about" class="py-20 text-center bg-white">
+    <h2 class="text-3xl font-bold text-blue-600 mb-4">About</h2>
+    <p class="max-w-3xl mx-auto text-gray-600">ScInnovHub — founded by Dr. Amr Abdo — connects academia, industry, and innovation through applied AI education and research.</p>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="bg-gray-900 text-white py-12">
+    <div class="container mx-auto text-center">
+      <h3 class="text-2xl font-bold text-blue-400 mb-6 animate-float">ScInnovHub</h3>
+      <nav class="space-x-6 text-sm mb-8">
+        <a href="#home" class="hover:text-blue-400 transition-colors">Home</a>
+        <a href="#academia" class="hover:text-blue-400 transition-colors">Academia</a>
+        <a href="#industry" class="hover:text-blue-400 transition-colors">Industry</a>
+        <a href="#innovation" class="hover:text-blue-400 transition-colors">Innovation</a>
+        <a href="#services" class="hover:text-blue-400 transition-colors">Services</a>
+        <a href="#blogs" class="hover:text-blue-400 transition-colors">Blogs</a>
+        <a href="#contact" class="hover:text-blue-400 transition-colors">Contact</a>
+        <a href="#about" class="hover:text-blue-400 transition-colors">About</a>
+      </nav>
+      <p class="text-gray-400 text-sm">© 2025 ScInnovHub — Bridging Academia and Industry through AI Innovation</p>
+    </div>
+  </footer>
+
+  <script>
+    // Smooth scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(link=>{
+      link.addEventListener('click',e=>{
+        e.preventDefault();
+        const target=document.querySelector(link.getAttribute('href'));
+        if(target) target.scrollIntoView({behavior:'smooth'});
+      });
+    });
+
+    // Typing animation
+    const typing=document.querySelector('.typing');
+    if(typing){ const text=typing.textContent; typing.textContent=''; let i=0;
+      (function type(){ if(i<text.length){ typing.textContent+=text.charAt(i); i++; setTimeout(type,100);} })();
+    }
+
+    // Intersection observer for fade-in
+    const obs=new IntersectionObserver(entries=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target);} });
+    },{threshold:0.1});
+    document.querySelectorAll('.fade-in-observer').forEach(el=>obs.observe(el));
+  </script>
+</body>
+</html>
